@@ -1,0 +1,145 @@
+{
+  "design_system": {
+    "name": "The Glass Laboratory",
+    "description": "A sterile, high-precision environment for AI evaluation. Combines the clarity of Swiss design with the depth of modern glassmorphism.",
+    "theme_strategy": "hybrid",
+    "default_theme": "light",
+    "typography": {
+      "font_family": {
+        "headings": "Manrope, sans-serif",
+        "body": "Inter, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "scale": {
+        "h1": "text-4xl font-bold tracking-tight lg:text-5xl",
+        "h2": "text-3xl font-semibold tracking-tight",
+        "h3": "text-2xl font-semibold tracking-tight",
+        "p": "leading-7 [&:not(:first-child)]:mt-6",
+        "small": "text-sm font-medium leading-none"
+      },
+      "imports": [
+        "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');"
+      ]
+    },
+    "colors": {
+      "light": {
+        "background": "210 40% 98%",
+        "foreground": "222 47% 11%",
+        "card": "0 0% 100%",
+        "card_foreground": "222 47% 11%",
+        "popover": "0 0% 100%",
+        "popover_foreground": "222 47% 11%",
+        "primary": "221 83% 53%",
+        "primary_foreground": "210 40% 98%",
+        "secondary": "210 40% 96.1%",
+        "secondary_foreground": "222 47% 11%",
+        "muted": "210 40% 96.1%",
+        "muted_foreground": "215.4 16.3% 46.9%",
+        "accent": "210 40% 96.1%",
+        "accent_foreground": "222 47% 11%",
+        "destructive": "0 84.2% 60.2%",
+        "destructive_foreground": "210 40% 98%",
+        "border": "214.3 31.8% 91.4%",
+        "input": "214.3 31.8% 91.4%",
+        "ring": "221 83% 53%"
+      },
+      "dark": {
+        "background": "222 47% 11%",
+        "foreground": "210 40% 98%",
+        "card": "217 33% 17%",
+        "card_foreground": "210 40% 98%",
+        "popover": "222 47% 11%",
+        "popover_foreground": "210 40% 98%",
+        "primary": "217 91% 60%",
+        "primary_foreground": "222 47% 11%",
+        "secondary": "217 33% 17%",
+        "secondary_foreground": "210 40% 98%",
+        "muted": "217 33% 17%",
+        "muted_foreground": "215 20.2% 65.1%",
+        "accent": "217 33% 17%",
+        "accent_foreground": "210 40% 98%",
+        "destructive": "0 62.8% 30.6%",
+        "destructive_foreground": "210 40% 98%",
+        "border": "217 33% 17%",
+        "input": "217 33% 17%",
+        "ring": "224.3 76.3% 48%"
+      }
+    },
+    "visual_enhancers": {
+      "glassmorphism": {
+        "panel": "bg-white/70 dark:bg-black/60 backdrop-blur-xl border border-white/20 shadow-sm",
+        "overlay": "bg-black/20 backdrop-blur-sm"
+      },
+      "borders": {
+        "radius": "0.5rem",
+        "style": "border border-border"
+      },
+      "shadows": {
+        "card": "shadow-sm hover:shadow-md transition-shadow duration-200",
+        "floating": "shadow-lg shadow-black/5"
+      }
+    },
+    "layout_strategies": {
+      "dashboard": {
+        "type": "bento_grid_mode_b",
+        "grid_cols": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4",
+        "gap": "gap-6",
+        "padding": "p-6 md:p-8"
+      },
+      "evaluation_panel": {
+        "type": "split_pane",
+        "left_panel": "w-full lg:w-2/3 h-full overflow-y-auto p-6",
+        "right_panel": "w-full lg:w-1/3 h-full border-l border-border bg-muted/30 p-6"
+      }
+    },
+    "components": {
+      "buttons": {
+        "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md font-medium transition-all active:scale-95",
+        "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 rounded-md font-medium transition-all active:scale-95",
+        "ghost": "hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-md font-medium transition-all"
+      },
+      "cards": {
+        "base": "rounded-lg border bg-card text-card-foreground shadow-sm"
+      },
+      "inputs": {
+        "base": "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      }
+    },
+    "assets": {
+      "images": {
+        "login_background": "https://images.unsplash.com/photo-1656991955761-8b1a8eb24049?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "avatars": [
+          "https://images.unsplash.com/photo-1589220286904-3dcef62c68ee?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "https://images.pexels.com/photos/18243773/pexels-photo-18243773.jpeg"
+        ]
+      },
+      "icons": "lucide-react"
+    },
+    "accessibility": {
+      "contrast_check": "Ensure 4.5:1 for normal text, 3:1 for large text.",
+      "focus_states": "Visible ring-2 ring-offset-2 on all interactive elements.",
+      "reduced_motion": "Respect prefers-reduced-motion media query."
+    },
+    "universal_guidelines": [
+      "Do not use gradients for backgrounds, use solid colors or subtle noise.",
+      "Use 'Manrope' for all headings to give a technical feel.",
+      "Use 'JetBrains Mono' for all AI prompts and responses.",
+      "Ensure all interactive elements have a 'data-testid'.",
+      "Use 'sonner' for toast notifications.",
+      "Avoid 'Inter' for headings.",
+      "Use generous padding (p-6, p-8) to create a spacious feel."
+    ]
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Install fonts: Manrope, JetBrains Mono.",
+      "Configure Tailwind theme with the provided colors and radius.",
+      "Create a 'Layout' component that handles the sidebar and header structure."
+    ],
+    "pages": {
+      "login": "Use the 'login_background' image as a subtle cover or side panel. Keep the form clean and centered.",
+      "dashboard": "Implement the 'Bento Grid Mode B'. Use cards for 'Recent Evaluations', 'Safety Score', and 'Hallucination Rate'.",
+      "evaluation": "Use the 'split_pane' layout. The left side displays the Prompt and AI Response (in Mono font). The right side contains the rating sliders and toggles."
+    }
+  }
+}
