@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,6 @@ import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
-
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
@@ -49,18 +49,19 @@ export default function EvaluationPanel() {
     
     setLoading(true);
     try {
-      await axios.post(`${API}/evaluations`, {
-        response_id: response.id,
-        prompt: response.prompt,
-        model_response: response.response,
-        evaluator_id: evaluatorId,
-        helpfulness: helpfulness[0],
-        accuracy: accuracy[0],
-        clarity: clarity[0],
-        has_hallucination: hasHallucination,
-        has_unsafe_content: hasUnsafeContent,
-        improved_response: improvedResponse
-      });
+  await axios.post(`${API_BASE_URL}/api/evaluations`, {
+    response_id: response.id,
+    prompt: response.prompt,
+    model_response: response.response,
+    evaluator_id: evaluatorId,
+    helpfulness: helpfulness[0],
+    accuracy: accuracy[0],
+    clarity: clarity[0],
+    has_hallucination: hasHallucination,
+    has_unsafe_content: hasUnsafeContent,
+    improved_response: improvedResponse,
+  });
+
       toast.success("Evaluation submitted successfully");
       navigate("/history");
     } catch (error) {

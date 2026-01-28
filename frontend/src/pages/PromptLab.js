@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle, Sparkles, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -25,7 +26,7 @@ export default function PromptLab() {
     
     setLoading(true);
     try {
-      const result = await axios.post(`${API}/generate`, { prompt });
+      const result = await axios.post(`${API_BASE_URL}/api/generate`, { prompt });
       setResponse(result.data);
       toast.success("Response generated successfully");
     } catch (error) {

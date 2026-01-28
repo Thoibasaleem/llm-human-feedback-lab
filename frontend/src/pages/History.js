@@ -3,7 +3,7 @@ import axios from "axios";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, User, ThumbsUp, Target, Sparkles, AlertTriangle, ShieldAlert } from "lucide-react";
-
+import { API_BASE_URL } from "../apiConfig";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
@@ -17,13 +17,14 @@ export default function History() {
   
   const fetchEvaluations = async () => {
     try {
-      const response = await axios.get(`${API}/evaluations`);
-      setEvaluations(response.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const response = await axios.get(`${API_BASE_URL}/api/evaluations`);
+  setEvaluations(response.data);
+} catch (error) {
+  console.error(error);
+} finally {
+  setLoading(false);
+}
+
   };
   
   if (loading) {

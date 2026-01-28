@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Bar, Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 import { TrendingUp, AlertTriangle, Shield, Users } from "lucide-react";
-
+import { API_BASE_URL } from "../apiConfig";
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -20,13 +20,14 @@ export default function Analytics() {
   
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get(`${API}/analytics`);
-      setAnalytics(response.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const response = await axios.get(`${API_BASE_URL}/api/analytics`);
+  setAnalytics(response.data);
+} catch (error) {
+  console.error(error);
+} finally {
+  setLoading(false);
+}
+
   };
   
   if (loading) {

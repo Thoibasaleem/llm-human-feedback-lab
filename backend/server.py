@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+#from emergentintegrations.llm.chat import LlmChat, UserMessage
 import re
 
 ROOT_DIR = Path(__file__).parent
@@ -99,33 +99,36 @@ def check_quality(text: str, prompt: str) -> List[str]:
 @api_router.post("/generate", response_model=GenerateResponse)
 async def generate_response(request: GenerateRequest):
     try:
-        api_key = os.environ.get('EMERGENT_LLM_KEY')
-        if not api_key:
-            raise HTTPException(status_code=500, detail="API key not configured")
-        
-        chat = LlmChat(
-            api_key=api_key,
-            session_id=str(uuid.uuid4()),
-            system_message="You are a helpful AI assistant. Provide clear, accurate, and helpful responses."
+        # MOCK LLM RESPONSE (no external API)
+        prompt = request.prompt.strip()
+        if not prompt:
+            raise HTTPException(status_code=400, detail="Prompt is empty")
+
+        response_text = (
+            f"(MOCK RESPONSE) This is a simulated answer for the prompt: "
+            f"'{prompt}'. Use it to test the evaluation workflow."
         )
-        chat.with_model("openai", "gpt-4o")
-        
-        user_message = UserMessage(text=request.prompt)
-        response_text = await chat.send_message(user_message)
-        
+
+        # Reuse your existing rule-based quality checks
         quality_warnings = check_quality(response_text, request.prompt)
-        
+
+        # Build response object and store in Mongo
         response_obj = GenerateResponse(
             prompt=request.prompt,
             response=response_text,
-            quality_warnings=quality_warnings
+            quality_warnings=quality_warnings,
         )
-        
+
         doc = response_obj.model_dump()
-        doc['timestamp'] = doc['timestamp'].isoformat()
-        await db.responses.insert_one(doc)
-        
+        doc["timestamp"] = doc["timestamp"].isoformat()
+
+        try:
+            await db.responses.insert_one(doc)
+        except Exception as db_err:
+            logging.warning(f"Could not save response to MongoDB (mock mode): {db_err}")
+
         return response_obj
+
     except Exception as e:
         logging.error(f"Error generating response: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to generate response: {str(e)}")
