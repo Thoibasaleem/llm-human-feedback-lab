@@ -1,45 +1,71 @@
-```markdown
-# LLM Human Feedback Lab
+🧠 LLM Human Feedback Lab
 
-A full‑stack web app that simulates a human‑in‑the‑loop evaluation workflow for Large Language Models (LLMs). Users submit prompts, see LLM‑style responses, rate them, and view basic quality insights.
+A full-stack web app that simulates a human-in-the-loop evaluation workflow for Large Language Models (LLMs). Users submit prompts, see LLM-style responses, rate them, and view basic quality insights.
 
-## Features
+✨ Features
 
-- Prompt input and generated response view.  
-- Human evaluation panel (helpfulness, accuracy, clarity, hallucination flag, safety flag, improved response).  
-- Evaluation history page.  
-- Analytics dashboard with average scores, issue rates, and response‑length comparison.
+Prompt input and generated response view.
 
-## Tech Stack
+Human evaluation panel (helpfulness, accuracy, clarity, hallucination flag, safety flag, improved response).
 
-- **Frontend:** React (JavaScript)  
-- **Backend:** FastAPI (Python)  
-- **Database:** MongoDB at `mongodb://localhost:27017`
+Evaluation history page.
 
-## Screenshots
+Analytics dashboard with average scores, issue rates, and response-length comparison.
 
-![Prompt Lab](screenshots/prompt-lab.jpeg)
+🛠 Tech Stack
 
-![Evaluation Panel](screenshots/evaluation-panel.jpeg)
+Frontend: React (JavaScript)
 
-![Analytics Dashboard](screenshots/analytics-dashboard.jpeg)
+Backend: FastAPI (Python)
 
-## Running Locally
+Database: MongoDB
 
-**Backend**
+mongodb://localhost:27017
 
-```bash
+🖼 Screenshots
+
+Prompt Lab
+<img src="screenshots/prompt-lab.jpeg" alt="Prompt Lab" width="800"/>
+
+
+Evaluation Panel
+<img src="screenshots/evaluation-panel.jpeg" alt="Evaluation Panel" width="800"/>
+
+
+Analytics Dashboard
+<img src="screenshots/analytics-dashboard.jpeg" alt="Analytics Dashboard" width="800"/>
+
+
+
+⚙️ Running Locally
+Backend
 cd backend
 pip install -r requirements.txt
 uvicorn server:app --reload
-```
 
-**Frontend**
 
-```bash
+Backend runs on:
+http://127.0.0.1:8000
+
+Frontend
 cd frontend
 npm install
 npm run dev
-```
 
-Backend runs on `http://127.0.0.1:8000`, frontend on the port shown in the terminal (commonly `http://localhost:5173`).
+
+Frontend runs on the port shown in the terminal (commonly http://localhost:5173
+).
+
+✅ Notes for Images to Show on GitHub
+
+Make sure the folder structure is:
+
+project-root/
+├── README.md
+└── screenshots/
+    ├── prompt-lab.jpeg
+    ├── evaluation-panel.jpeg
+    └── analytics-dashboard.jpeg
+
+
+Filenames are case-sensitive on GitHub.
