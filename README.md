@@ -56,10 +56,7 @@ npm run dev
 Frontend runs on the port shown in the terminal (commonly http://localhost:5173
 ).
 
-✅ Notes for Images to Show on GitHub
-
-Make sure the folder structure is:
-
+The folder structure is:
 project-root/
 ├── README.md
 └── screenshots/
@@ -68,4 +65,3 @@ project-root/
     └── analytics-dashboard.jpeg
 
 
-Filenames are case-sensitive on GitHub.
